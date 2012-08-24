@@ -5,7 +5,7 @@
 ### Overview
 The Janus server fulfills the service by providing the following functionality:
 
-- Janus web interface
+- Janus web interface  
   where users are able to create, view, and delete aliases
 - Janus web API  
   used by the website and the add-on to create aliases (and possibly more, in
@@ -17,7 +17,7 @@ The Janus server fulfills the service by providing the following functionality:
 - BrowserID certifier service  
   used internally by the IdP to create certificates
 
-This functionality is implemented through independently-running four processes:
+This functionality is implemented through four independently-running processes:
 
 1. web process (`server.js`)  
    implements all aspects of the web interface,
@@ -26,7 +26,7 @@ This functionality is implemented through independently-running four processes:
 2. mail process (`mail/index.js`)  
    runs an SMTP server to process incoming mail,
    handles outgoing mail by sending it to an outgoing SMTP server
-3. [BrowserID certifier]() process (`browserid-certifier`)  
+3. [BrowserID certifier][browserid-certifier] process (`browserid-certifier`)  
    an internal process (i.e., not exposed to the outside world) used to issue
    certificates when vouching for email addresses as part of the IdP process
 4. proxy process (`proxy.js`)  
@@ -43,7 +43,7 @@ The hardest part of the setup is getting all the crypto stuff working, so let's
 start with that.
 
 #### BrowserID certifier
-Start by making sure you have the browserid-certifier repo checked out. (It's
+Start by making sure you have the [browserid-certifier][] repo checked out. (It's
 included as a git submodule.)
 
     git submodule init
@@ -82,6 +82,8 @@ following:__
         "provisioning": "/provisioning.html", 
         "public-key": { ... }
     }
+
+[browserid-certifier]: https://github.com/mozilla/browserid-certifier
 
 #### Setting up HTTPS
 For your website to be treated as a BrowserID IdP, it needs to serve the
