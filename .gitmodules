@@ -1,0 +1,6 @@
+[submodule "server/browserid-certifier"]
+	path = server/browserid-certifier
+	url = git://github.com/mozilla/browserid-certifier.git
+[submodule "server/mail/simplesmtp"]
+	path = server/mail/simplesmtp
+	url = git://github.com/andris9/simplesmtp.git

@@ -1,0 +1,50 @@
+template = """
+
+{{#email}}
+<h3>Your account</h3>
+<p>You are logged in as {{email}}.</p>
+<p>
+<input type="button" class="btn" id="signout" value="Log out" />
+</p>
+
+<h3>Create an alias</h3>
+<p>
+    <input type="button" id="create" class="btn" value="Create a new alias" />
+</p>
+<h3>Your aliases</h3>
+<div class="span6">
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Alias</th>
+            </tr>
+        </thead>
+        <tbody id="aliases">
+            {{#aliases}}
+            <tr>
+                <td><i data-value="{{alias}}" class="icon-remove"></i></td>
+                <td>{{alias}}</td>
+            </tr>
+            {{/aliases}}
+            {{^aliases}}
+            <tr>
+                <td></td>
+                <td>No aliases yet</td>
+            </tr>
+            {{/aliases}}
+        </tbody>
+    </table>
+</div>
+
+{{/email}}
+
+{{^email}}
+<h2>Log in to use Janus</h2>
+<p>You're just a couple of steps away from creating aliases for your email address.</p>
+<p>To continue, click the button below to sign in with Persona
+(even if it's your first time).</p>
+<p><img id="signin" src="sign_in.png" alt="Sign in with Persona" /></p>
+{{/email}}
+
+"""

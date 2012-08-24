@@ -1,0 +1,21 @@
+{
+    "port": 8008,
+    "httpPort": 80,
+    "httpsPort": 443,
+    "smtpPort": 25,
+    "audience": "https://janus.im",
+    "domain": "janus.im",
+    "send": {
+        "port": 465,
+        "host": "smtp.gmail.com",
+        "options": {
+            "secureConnection": true,
+            "auth": {
+                "user": "some.user.name@gmail.com",
+                "pass": "..."
+            }
+        }
+    },
+    "certifierHost": "127.0.0.1",
+    "certifierPort": 8080
+}

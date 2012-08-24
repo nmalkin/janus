@@ -1,0 +1,17 @@
+{
+    "name": "janus", 
+    "license": "GPL 3", 
+    "author": "Nathan Malkin", 
+    "version": "0.1", 
+    "fullName": "Janus", 
+    "id": "jid1-G0yK3JsaG62foA", 
+    "description": "",
+    "preferences": [
+    {
+        "name": "server",
+        "title": "Janus server URL",
+        "type": "string",
+        "value": "https://janus.im"
+    }    
+    ]
+}
