@@ -65,7 +65,7 @@ $.get('/authenticate', function(response) {
     var authenticating = false;
 
     navigator.id.watch({
-        loggedInEmail: email,
+        loggedInUser: email,
         onlogin: function(assertion) {
             console.log('login');
             authenticating = true;
