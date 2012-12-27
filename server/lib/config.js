@@ -1,6 +1,6 @@
 "use strict";
 
-var CONFIG_FILE = '/config.json';
+var CONFIG_FILE = '/../config/config.json';
 
 var fs = require('fs');
 

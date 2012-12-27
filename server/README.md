@@ -19,22 +19,22 @@ The Janus server fulfills the service by providing the following functionality:
 
 This functionality is implemented through four independently-running processes:
 
-1. web process (`server.js`)  
+1. web process (`bin/web.js`)  
    implements all aspects of the web interface,
    including the IdP endpoints (.well-known/browserid and authorization and
    provisioning pages)
-2. mail process (`mail/index.js`)  
+2. mail process (`bin/mail.js`)  
    runs an SMTP server to process incoming mail,
    handles outgoing mail by sending it to an outgoing SMTP server
-3. [BrowserID certifier][browserid-certifier] process (`browserid-certifier`)  
+3. [BrowserID certifier][browserid-certifier] process (`bin/browserid-certifier`)  
    an internal process (i.e., not exposed to the outside world) used to issue
    certificates when vouching for email addresses as part of the IdP process
-4. proxy process (`proxy.js`)  
+4. proxy process (`bin/proxy.js`)  
    The web process is run as an HTTP server, but the .well-known/browserid file
    (for the IdP process) needs to be served over HTTPS. To make sure this
    happens, and keep everything as simple as possible, the entire website is
    served over HTTPS. The proxy server makes this happen. It proxies all traffic
-   to the external HTTPS port (specified in `config.json`) to the web process's
+   to the external HTTPS port (specified in `config/config.json`) to the web process's
    port. It also redirects all traffic to the external HTTP port to go through
    HTTPS.
 
@@ -136,7 +136,7 @@ does, forwards the message to the correct email address. The SMTP server
 processes incoming mail and acts as an SMTP client for outgoing mail, but the
 actual delivery of the forwarded mail is delegated to another SMTP server.
 
-Its credentials are specified in `config.json`:
+Its credentials are specified in `config/config.json`:
 
 ```javascript
     "send": {
@@ -166,8 +166,8 @@ Any additional dependencies can be installed by running `npm install`.
 
 #### Other configurations
 Finally, you'll need to make some changes to the configuration file, which must
-be located in the `server` directory and called `config.json`. A sample file is
-included as `config.json.dist`.
+be located in the `config` directory and called `config.json`. A sample file is
+included as `config/config.json.dist`.
 
 ```javascript
 {

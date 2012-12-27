@@ -1,15 +1,15 @@
 "use strict";
 
-var authenticate = require('./auth').authenticate;
-var certify = require('./certify');
-var config = require('./config');
+var authenticate = require('../lib/auth').authenticate;
+var certify = require('../lib/certify');
+var config = require('../lib/config');
 var express = require('express');
 var fs = require('fs');
-var generateAlias = require('./alias').random;
+var generateAlias = require('../lib/alias').random;
 var http = require('http');
 var https = require('https');
-var Key = require('./keys').Key;
-var store = require('./store');
+var Key = require('../lib/keys').Key;
+var store = require('../lib/store');
 
 var app = express();
 app.use(express.logger());
@@ -22,7 +22,7 @@ app.use(express.session({
     }
 }));
 app.use(express.bodyParser());
-app.use(express.static(__dirname + '/static'));
+app.use(express.static(__dirname + '/../static'));
 
 app.get('/authenticate', function(req, res) {
     var email = req.session.email || null;
@@ -51,7 +51,7 @@ function requireAuth(req, res, next) {
     }
 }
 
-var wellKnown = fs.readFileSync(__dirname + '/var/browserid');
+var wellKnown = fs.readFileSync(__dirname + '/../var/browserid');
 app.get('/.well-known/browserid', function(req, res) {
     res.type('application/json');
     res.send(wellKnown);

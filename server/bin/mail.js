@@ -1,8 +1,8 @@
 "use strict";
 
-var receive = require('./receive');
-var send = require('./send');
-var store = require('../store');
+var receive = require('../lib/mail/receive');
+var send = require('../lib/mail/send');
+var store = require('../lib/store');
 
 /**
  * Validates given message by checking if the recipient exists.

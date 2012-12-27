@@ -1,14 +1,14 @@
 "use strict";
 
-var config = require('./config');
+var config = require('../lib/config');
 var fs = require('fs');
 var http = require('http');
 var httpProxy = require('http-proxy');
 
 // The key and certificate for HTTPS
 var httpsOptions = {
-    key: fs.readFileSync(__dirname + '/var/cert/server.key'),
-    cert: fs.readFileSync(__dirname + '/var/cert/server.crt')
+    key: fs.readFileSync(__dirname + '/../var/cert/server.key'),
+    cert: fs.readFileSync(__dirname + '/../var/cert/server.crt')
 };
 
 // Proxy HTTPS from config.httpsPort to the HTTP server at config.port
