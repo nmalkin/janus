@@ -92,7 +92,7 @@ site over HTTPS while we're at it.
 
 This means that you'll need an SSL certificate for everything to work.
 
-##### I already a certificate.
+##### I already have a certificate.
 Great!
 
 1. Create a directory named `cert` in the `var` directory
