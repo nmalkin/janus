@@ -1,0 +1,10 @@
+#!/usr/local/bin/node
+
+var spawn = require('child_process').spawn;
+
+spawn('sudo', ['node', 'bin/proxy.js'], {'stdio':'pipe'});
+
+require('../bin/mail.js'); // XXX: breaks if SMTP port requires elevated privileges (e.g., the default value of 25)
+require('../bin/web.js');
+
+spawn('node', ['bin/browserid-certifier/bin/certifier'], {'stdio':'inherit'});

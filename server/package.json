@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "author": "Nathan Malkin <nathan@nathanmalkin.com>",
     "scripts": {
+        "start": "node scripts/run"
     },
     "dependencies": {
         "express": "3.x",
