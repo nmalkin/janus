@@ -5,6 +5,7 @@
     "smtpPort": 25,
     "audience": "https://janus.im",
     "domain": "janus.im",
+    "database": "var/janus.db",
     "send": {
         "port": 465,
         "host": "smtp.gmail.com",

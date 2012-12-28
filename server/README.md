@@ -158,8 +158,8 @@ out the documentation for the [simplesmtp][] library.
 [simplesmtp]: https://github.com/andris9/simplesmtp "simplesmtp node library"
 
 #### Setting up storage
-Janus uses [redis](http://redis.io/) for data storage. You'll need to have it
-installed and running when you start the server.
+Janus uses [sqlite](https://www.sqlite.org/) for data storage.
+You can set up the database by running `scripts/db-setup`.
 
 #### Installing additional dependencies
 Any additional dependencies can be installed by running `npm install`.
@@ -183,6 +183,8 @@ included as `config/config.json.dist`.
     "audience": "https://janus.im",
     /* Aliases will be issued as alias@domain. */
     "domain": "janus.im",
+    /* The name and location of the SQLite database file. */
+    "database": "var/janus.db",
     /* Outgoing SMTP server information. See above. */
     "send": { ... }
     /* The host where the certifier process is running. */

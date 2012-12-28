@@ -1,0 +1,10 @@
+#!/usr/local/bin/node
+
+var config = require('../lib/config');
+var sqlite = require('sqlite3').verbose();
+var db = new sqlite.Database(config.database);
+
+db.run('CREATE TABLE IF NOT EXISTS aliases (alias VARCHAR(64), email VARCHAR(128), status TINYINT, realm VARCHAR(128), forwards INTEGER, comment TEXT)');
+
+
+db.close();
