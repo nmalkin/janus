@@ -26,7 +26,7 @@ exports.getAlias = function(alias, callback) {
 
 /* Calls callback with list of active aliases for given email address. */
 exports.getAliases = function(email, callback) {
-    db.all('SELECT alias FROM aliases WHERE email=? AND status=1', email, function(err, rows) {
+    db.all('SELECT alias FROM aliases WHERE email=? AND status=1 ORDER BY rowid DESC', email, function(err, rows) {
         if(err) callback(err);
         else {
             callback(null, rows.map(function(row) {
