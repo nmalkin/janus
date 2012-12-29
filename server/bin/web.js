@@ -78,7 +78,12 @@ app.delete('/alias', function(req, res) {
         return;
     }
 
-    store.deactivateAlias(req.body.alias);
+    store.getAlias(req.body.alias, function(err, alias) {
+        if(alias && alias.email === req.session.email) {
+            store.deactivateAlias(req.body.alias);
+        }
+    });
+
     res.send(200);
 });
 
