@@ -15,8 +15,8 @@ function newRandomAlias() {
 
 /* Is given alias already in the store? Calls callback with boolean answer. */
 function aliasUnique(alias, callback) {
-    store.getAlias(alias, function(err, email) {
-        callback(email === null);
+    store.getAlias(alias, function(err, alias) {
+        callback(alias === null);
     });
 }
 

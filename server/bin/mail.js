@@ -4,6 +4,12 @@ var receive = require('../lib/mail/receive');
 var send = require('../lib/mail/send');
 var store = require('../lib/store');
 
+/* Returns true if given alias object represents a valid alias. */
+function isValid(alias) {
+    return (alias !== undefined) && (alias !== null) && // alias should exist
+        (alias.status == 1); // and must be active
+}
+
 /**
  * Validates given message by checking if the recipient exists.
  * @param {Object} message The message, which should have a 'to' field that is
@@ -13,9 +19,8 @@ var store = require('../lib/store');
  */
 var validateMessage = function(message, callback) {
     console.log('validating');
-    store.getAlias(message.to, function(err, email) {
-        var valid = (email !== undefined) && (email !== null);
-        callback(valid);
+    store.getAlias(message.to, function(err, alias) {
+        callback(isValid(alias));
     });
 };
 
@@ -24,14 +29,13 @@ var validateMessage = function(message, callback) {
  * @param {Object} message The incoming message.
  */
 var handleMessage = function(message) {
-    store.getAlias(message.to, function(err, email) {
-        var valid = (email !== undefined) && (email !== null);
-        if(! valid) {
+    store.getAlias(message.to, function(err, alias) {
+        if(! isValid(alias)) {
             console.log('Received invalid message', message);
             return;
         }
 
-        message.to = email;
+        message.to = alias.email;
 
         send.message(message, function(err, res) {
             if(err) {

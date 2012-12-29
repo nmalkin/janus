@@ -78,7 +78,7 @@ app.delete('/alias', function(req, res) {
         return;
     }
 
-    store.deleteAlias(req.session.email, req.body.alias);
+    store.deactivateAlias(req.body.alias);
     res.send(200);
 });
 
@@ -93,8 +93,8 @@ app.get('/aliases', function(req, res) {
 });
 
 function verifyOwner(email, alias, callback) {
-    store.getAlias(alias, function(err, owner) {
-        callback(owner && owner === email);
+    store.getAlias(alias, function(err, alias) {
+        callback(alias && alias.email === email);
     });
 }
 
